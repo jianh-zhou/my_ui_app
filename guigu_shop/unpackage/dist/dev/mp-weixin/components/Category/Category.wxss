@@ -1,0 +1,31 @@
+.category-list-container .category-item-item image {
+  height: 340rpx;
+  width: 100%;
+}
+.category-list-container .category-item-item .category-scrollView-list {
+  white-space: nowrap;
+}
+.category-list-container .category-item-item .category-scrollView-list .category-scrollView-item {
+  display: inline-block;
+  width: 200rpx;
+  height: 300rpx;
+  margin: 0 10rpx;
+  text-align: center;
+  vertical-align: top;
+}
+.category-list-container .category-item-item .category-scrollView-list .category-scrollView-item image {
+  width: 200rpx;
+  height: 200rpx;
+  background-color: #eee;
+}
+.category-list-container .category-item-item .category-scrollView-list .category-scrollView-item text {
+  display: -webkit-box;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-size: 28rpx;
+  white-space: pre-wrap;
+}
+

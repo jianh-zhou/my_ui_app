@@ -1,4 +1,6 @@
 {
-  "navigationBarTitleText": "哈哈",
-  "usingComponents": {}
+  "usingComponents": {
+    "recommend": "/components/Recommend/Recommend",
+    "cate-list": "/components/cateList/cateList"
+  }
 }

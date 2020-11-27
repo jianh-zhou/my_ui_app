@@ -15,7 +15,8 @@ export default function (url,data={},method="GET"){
 	return new Promise((resolve,reject)=>{
 		uni.request({
 			method,
-			url:baseUrl+url
+			url:baseUrl+url,
+			data,
 		}).then((res)=>{
 			// console.log('请求成功')
 			resolve(res[1].data)

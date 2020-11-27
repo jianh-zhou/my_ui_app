@@ -71,4 +71,7 @@
   background-color: #bb2c08;
   width: 100%;
 }
+.scroll-view-container {
+  height: calc(100vh - 140rpx - 0px - 0px);
+}
 

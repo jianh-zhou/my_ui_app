@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "category": "/components/Category/Category"
+  },
+  "component": true
+}

@@ -11,32 +11,52 @@
 		</view>
 		<!-- 头部导航栏 -->
 		<scroll-view scroll-x="true" class="scroll-view-content" v-if="contentData.kingKongModule">
-			<view class="scroll-item active">推荐</view>
-			<view class="scroll-item"  v-for="(kingKong,index) in contentData.kingKongModule.kingKongList" :key="kingKong.L1Id">{{kingKong.text}}</view>
+			<view :class="navIndex===-1?'scroll-item active':'scroll-item'"  @click="handleChangeNavIndex(-1)">推荐</view>
+			<view :class="navIndex===index?('scroll-item active'):'scroll-item'"  @click="handleChangeNavIndex(index)" v-for="(kingKong,index) in contentData.kingKongModule.kingKongList" :key="kingKong.L1Id">{{kingKong.text}}</view>
 		</scroll-view>
+		
+		<scroll-view scroll-y="true" class="scroll-view-container" >
+
+			<Recommend :contentData="contentData" v-if="navIndex===-1" />
+			<cateList  v-else  :navIndex="navIndex"  />
+		</scroll-view>
+		
 	</view>
 </template>
 
 <script>
 	// 引入ajax函数
 	import ajax from '../../utils/ajax.js'
-	export default {
+	// 引入recommend组件
+	import Recommend from '../../components/Recommend/Recommend.vue'
+	// 引入cateList组件
+	import cateList from '../../components/cateList/cateList.vue'
+	export default {	
+		components:{
+			Recommend,
+			cateList
+		},
 		data() {
 			return {
 				title: 'Hello',
-				contentData:{}
+				contentData:{},//所有的请求回来的数据
+				navIndex:-1
 			}
 		},
 		// 界面刚好加载的生命周期回调函数
 		async onLoad() {
-			console.log('onload111')
+			// console.log('onload111')
 			const result=await ajax('/getIndexDatas')
-			console.log(result)
+			// console.log(result)
 			// 更新状态数据
 			this.contentData=result
 		},
 		methods: {
-
+		// 定义一个方法,用来切换选中的头部导航栏的样式
+		handleChangeNavIndex(index){
+			this.navIndex=index
+			console.log(this.navIndex)
+		}
 		}
 	}
 </script>
@@ -96,5 +116,7 @@
 				bottom 2upx
 				background-color #bb2c08
 				width 100%
-			
+
+	.scroll-view-container
+		height calc(100vh - 140upx - var(--window-bottom) - var(--window-top))
 </style>
